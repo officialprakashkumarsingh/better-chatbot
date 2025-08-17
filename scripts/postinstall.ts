@@ -32,6 +32,22 @@ async function main() {
       console.error("File based MCP config is not supported on Vercel.");
       process.exit(1);
     }
+
+    // Check if database URL is configured before attempting migration
+    if (!process.env.POSTGRES_URL) {
+      console.log("⚠️  No database URL configured on Vercel.");
+      console.log("💡 Database migration will be skipped during build.");
+      console.log("🔧 To enable database features:");
+      console.log(
+        "   1. Add POSTGRES_URL to your Vercel environment variables",
+      );
+      console.log("   2. Redeploy your application");
+      console.log(
+        "   3. Database tables will be created automatically on first run",
+      );
+      return;
+    }
+
     console.log("Running on Vercel, performing database migration.");
     await runCommand("pnpm db:migrate", "Database migration");
   } else if (IS_DOCKER_ENV) {

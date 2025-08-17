@@ -70,6 +70,26 @@ Your Better Chatbot is **90% ready**! The project is installed and configured. Y
    - Create database
    - Update `.env` with local connection
 
+### Path 4: Deploy to Vercel (Cloud Hosting)
+**Time: 3 minutes | Cost: Free**
+
+1. **Fork this repository** on GitHub
+
+2. **Deploy to Vercel**:
+   - Go to: https://vercel.com/
+   - Click "New Project"
+   - Import your forked repository
+   - Add environment variables:
+     ```
+     BETTER_AUTH_SECRET=your_generated_secret
+     GOOGLE_GENERATIVE_AI_API_KEY=your_gemini_key
+     POSTGRES_URL=your_neon_database_url
+     ```
+
+3. **Deploy**:
+   - Vercel will automatically build and deploy
+   - Your app will be available at `https://your-app.vercel.app`
+
 ## 🔑 API Key Options Explained
 
 ### LLM Providers (Pick One or More)
@@ -140,6 +160,10 @@ pnpm docker-compose:up
 
 4. **Build errors**
    - Run: `pnpm clean && pnpm install`
+
+5. **Vercel deployment fails**
+   - Ensure all required environment variables are set
+   - Check Vercel function logs for specific errors
 
 ### Need Help?
 

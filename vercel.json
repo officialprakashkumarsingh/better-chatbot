@@ -1,0 +1,23 @@
+{
+  "buildCommand": "pnpm build",
+  "installCommand": "pnpm install",
+  "framework": "nextjs",
+  "regions": ["iad1", "sfo1"],
+  "functions": {
+    "src/app/api/**/*.ts": {
+      "maxDuration": 60
+    },
+    "src/app/api/chat/**/*.ts": {
+      "maxDuration": 300
+    }
+  },
+  "env": {
+    "NODE_ENV": "production",
+    "VERCEL": "1"
+  },
+  "build": {
+    "env": {
+      "NODE_ENV": "production"
+    }
+  }
+}
